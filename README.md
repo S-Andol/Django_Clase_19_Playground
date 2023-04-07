@@ -40,3 +40,72 @@ template = loader.get_template(r'mostrar_fecha.html')
 
 y cambiarlo por 
 template = loader.get_template(r'inicio/mostrar_fecha.html')
+
+
+# Comenzando con Bootstrap
+Descargamos un archivo .zip de la pagina https://startbootstrap.com/theme/landing-page
+
+# Creamos static
+Creamos una carpeta que se llama static dentro de la carpeta inicio
+
+# Pegamos en static
+Solo agarramos de nuestro archivo .zip las carpetas y archivos
+assets
+css
+js
+index.html
+
+Los pegamos en la carpeta static
+STATIC es porque en setting vemos que lo tomo como STATIC_URL = 'static/'
+
+Son los que realmente nos importan
+
+# Movemos Index.html
+Sacamos index.html de static y lo colocamos en templates
+Al hacer esto debemos modificar la funcion de mi_vista.
+
+def mi_vista(request):
+    print('Pase por aca!!! REY') #sale en la terminal, en el momento en que se ejecute
+    # return HttpResponse('<h1>Mi Primera Vista</h1>')
+    return render(request,'inicio/index.html')
+
+# Cargue de paguina
+Vemos que nos carga la imagen pero nos faltan todos los estilos
+Para eso "cargamos" static agregando al hmtl indel esto:
+
+{% load static %}
+
+En esta ubcicacion
+
+<html lang="en">
+    {% load static %}
+    <head>
+
+Y modificamos 
+<link href="css/styles.css" rel="stylesheet" />
+
+Por 
+
+<link href= {% static 'css/styles.css' %} rel="stylesheet" />
+
+Tambien debemos modificar los de JS
+
+En index esta:
+
+<script src="js/scripts.js"></script>
+
+Y lo modificamos por:
+
+<script src={% static 'js/scripts.js' %}></script>
+
+# Nos recomienda volver a hacer una carpeta inicio para evitar la busqueda erronea de archivos
+Creamos una carpeta inicio dentro de static y movemos todo para ahi adentro.
+Pero si hacemos eso, debemos cambiar el link y el script del paso anterior
+
+<link href= {% static 'inicio/css/styles.css' %} rel="stylesheet" />
+<script src={% static 'inicio/js/scripts.js' %}></script>
+
+# hacer que aparezcan las imagenes
+Hacer lo mismo, tenes que cambiar la direccion a {% static "inicio/..." %}
+Con las partes que tenga que modificarse: por ejemplo
+<img class="img-fluid rounded-circle mb-3" src={% static "inicio/assets/img/testimonials-1.jpg" %}   alt="..." />

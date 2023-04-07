@@ -7,7 +7,8 @@ from django.shortcuts import render
 
 def mi_vista(request):
     print('Pase por aca!!! REY') #sale en la terminal, en el momento en que se ejecute
-    return HttpResponse('<h1>Mi Primera Vista</h1>')
+    # return HttpResponse('<h1>Mi Primera Vista</h1>')
+    return render(request,'inicio/index.html')
 
 # def mostrar_fecha(request):
 #     return HttpResponse(f'<p>{datetime.now()}</p>')
