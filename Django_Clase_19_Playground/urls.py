@@ -1,4 +1,4 @@
-"""django_clase_18 URL Configuration
+"""Django_Clase_19_Playground URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -19,6 +19,11 @@ from django.urls import path,include
 # otra forma de pedir eso:
 # from inicio import views
 
+
+
+app_name = 'inicio' # podemos nombrar al urlpatterns con un nombre
+
+
 # patrones de URL
 urlpatterns = [
     # path('',mi_vista),
@@ -36,6 +41,8 @@ urlpatterns = [
     # path("", include('inicio.urls')), # este path te redirige a las url de inicio.
     path('inicio/', include('inicio.urls')), # Basicamente condicionamos a la pagina para que cuando querramos ir a inicio, estemos obligados a colocarlo arriba.
     # http://127.0.0.1:8000/inicio/
+    # Le decimos 'Incluime' a este path todo lo que hay en el urls de la aplicacion de inicio.
+        
     
     path('admin/', admin.site.urls),
 ]

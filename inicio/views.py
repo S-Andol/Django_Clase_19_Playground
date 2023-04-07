@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, Context, loader
 from  inicio.models import Animal
+from django.shortcuts import render
 
 
 def mi_vista(request):
@@ -66,7 +67,7 @@ def mostrar_fecha(request):
     
     # De esta forma nos ahorramos todas las lineas de arriba
     
-    template = loader.get_template(r'mostrar_fecha.html')
+    template = loader.get_template(r'inicio/mostrar_fecha.html')
     # datos = {'fecha': dt_formateado} # esta es una forma tambien de colocar el diccionario
     # template_renderizado = template.render({datos})
     template_renderizado = template.render({'fecha': dt_formateado}) # a este render no le pasamos el contexto sino el diccionario.
@@ -88,7 +89,7 @@ def prueba_template(request):
         
     }
     
-    template = loader.get_template(r'prueba_template.html')
+    template = loader.get_template(r'inicio/prueba_template.html')
     template_renderizado = template.render(datos)
     return HttpResponse(template_renderizado)
     # una vez que generamos la funcion, falta generar la URL
@@ -100,7 +101,20 @@ def crear_animal (request):
     print(animal.nombre)
     print(animal.edad) # para que se vea por la terminal
     animal.save() # cumple la misma funcion que el save de la terminal
+    
+    
+    
     datos ={'animal':animal} #en la llave de ese contexto vaya ese animal
-    template = loader.get_template(r'crear_animal.html')
+    template = loader.get_template(r'inicio/crear_animal.html')
     template_renderizado = template.render(datos)
     return HttpResponse(template_renderizado)
+
+
+def prueba_render(request):
+    datos = {'nombre':'Pepe'}
+    # template = loader.get_template(r'prueba_render.html')
+    # template_renderizado = template.render(datos)
+    # return HttpResponse(template_renderizado)
+
+    return render(request, r'inicio/prueba_render.html', datos) # el no pasarle el dicc datos no me va a aparecer "pepe"
+

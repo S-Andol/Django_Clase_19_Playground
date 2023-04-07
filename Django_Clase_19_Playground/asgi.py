@@ -1,5 +1,5 @@
 """
-ASGI config for django_clase_18 project.
+ASGI config for Django_Clase_19_Playground project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_clase_18.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Django_Clase_19_Playground.settings')
 
 application = get_asgi_application()
