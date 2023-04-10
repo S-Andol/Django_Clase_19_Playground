@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>{{fecha}}</p> <!-- Colocamos doble {} para que nos tome el dato -->
-</body>
-</html>
+<!-- RECORDAR QUE ELIMINAMOS TODO EL INICIO -->
+<!-- Esta es una manera de usar la herencia template -->
+{% extends 'base.html' %}
+
+<!-- Si tuviera que cargar alguna IMAGEN o lo que sea que este dentro de los "static" debo agregar el load... -->
+<!-- {% load static %} -->
+
+{% block title_head %}
+<title>Mostrar Fecha</title>
+{% endblock title_head %}
+
+{% block 'h1_header' %}
+
+<h1>Aca muestro la fecha right now</h1>
+<p>{{fecha}}</p>
+{% endblock 'h1_header' %}
